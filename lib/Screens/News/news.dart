@@ -25,10 +25,10 @@ class _NewsPageState extends State<NewsPage> {
   List<String> navBarItems = [
     "Top News",
     "India",
-    "Health",
-    "Top News",
-    "India",
-    "Health"
+    "Goverment Policies", //https://newsapi.org/v2/everything?q=farming+policies+india&apiKey=ed87f846339f40569b4527126aed153f
+    "Technology", //https://newsapi.org/v2/everything?q=farming+technology+india&apiKey=ed87f846339f40569b4527126aed153f
+    "Weather", //https://newsapi.org/v2/everything?q=india+weather+farming&apiKey=ed87f846339f40569b4527126aed153f
+    "Markets" //https://newsapi.org/v2/everything?q=india+apmc&apiKey=ed87f846339f40569b4527126aed153f
   ];
   bool isLoading = true;
   bool isLoadingScroll = true;
@@ -178,9 +178,13 @@ class _NewsPageState extends State<NewsPage> {
                           try {
                             return Container(
                               child: InkWell(
-                                onTap:() {
-                                    Navigator.push(context, MaterialPageRoute(builder: (context)=> NewsView(instace.newsUrl)));
-                                  },
+                                onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              NewsView(instace.newsUrl)));
+                                },
                                 child: Card(
                                   shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(15)),
@@ -207,7 +211,8 @@ class _NewsPageState extends State<NewsPage> {
                                                   begin: Alignment.topCenter,
                                                   end: Alignment.bottomCenter,
                                                   colors: [
-                                                    Colors.black12.withOpacity(0),
+                                                    Colors.black12
+                                                        .withOpacity(0),
                                                     Colors.black
                                                   ],
                                                 )),
@@ -274,13 +279,18 @@ class _NewsPageState extends State<NewsPage> {
                               return Container(
                                 // Image.asset('assets/images/news.png')
                                 child: InkWell(
-                                  onTap:() {
-                                    Navigator.push(context, MaterialPageRoute(builder: (context)=> NewsView(newsModelList[index].newsUrl)));
+                                  onTap: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => NewsView(
+                                                newsModelList[index].newsUrl)));
                                   },
                                   child: Card(
                                     elevation: 1.0,
                                     shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(15)),
+                                        borderRadius:
+                                            BorderRadius.circular(15)),
                                     margin: EdgeInsets.symmetric(
                                         horizontal: 10, vertical: 10),
                                     child: Center(
@@ -302,7 +312,8 @@ class _NewsPageState extends State<NewsPage> {
                                               child: Container(
                                                 decoration: BoxDecoration(
                                                     borderRadius:
-                                                        BorderRadius.circular(15),
+                                                        BorderRadius.circular(
+                                                            15),
                                                     gradient: LinearGradient(
                                                         colors: [
                                                           Colors.black12
@@ -318,7 +329,8 @@ class _NewsPageState extends State<NewsPage> {
                                                       15, 15, 10, 5),
                                                   child: Column(
                                                     crossAxisAlignment:
-                                                        CrossAxisAlignment.start,
+                                                        CrossAxisAlignment
+                                                            .start,
                                                     children: [
                                                       Text(
                                                         newsModelList[index]
@@ -326,13 +338,15 @@ class _NewsPageState extends State<NewsPage> {
                                                                     .length >
                                                                 100
                                                             ? "${newsModelList[index].newsHead.substring(0, 80)}...."
-                                                            : newsModelList[index]
+                                                            : newsModelList[
+                                                                    index]
                                                                 .newsHead,
                                                         style: TextStyle(
                                                             color: Colors.white,
                                                             fontSize: 20,
                                                             fontWeight:
-                                                                FontWeight.w500),
+                                                                FontWeight
+                                                                    .w500),
                                                       ),
                                                       Text(
                                                         newsModelList[index]
@@ -340,13 +354,15 @@ class _NewsPageState extends State<NewsPage> {
                                                                     .length >
                                                                 50
                                                             ? "${newsModelList[index].newsDes.substring(0, 55)}...."
-                                                            : newsModelList[index]
+                                                            : newsModelList[
+                                                                    index]
                                                                 .newsDes,
                                                         style: TextStyle(
                                                             color: Colors.white,
                                                             fontSize: 12,
                                                             fontWeight:
-                                                                FontWeight.w300),
+                                                                FontWeight
+                                                                    .w300),
                                                       ),
                                                     ],
                                                   ),

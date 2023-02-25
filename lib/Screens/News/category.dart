@@ -21,13 +21,24 @@ class _CategoryNewsState extends State<CategoryNews> {
 
   bool isLoading = true;
   getNewsByQuery(String query) async {
-    String url;
+    String url = "";
     if (query == "Top News" || query == "India") {
       url =
           "https://newsapi.org/v2/top-headlines?country=in&apiKey=ed87f846339f40569b4527126aed153f";
-    } else {
+    } else if (query == "Goverment Policies") {
       url =
-          "https://newsapi.org/v2/everything?q=$query&from=2023-01-25&sortBy=publishedAt&apiKey=ed87f846339f40569b4527126aed153f";
+          "https://newsapi.org/v2/everything?q=farming+policies+india&apiKey=ed87f846339f40569b4527126aed153";
+    } else if (query == "Technology") {
+      url =
+          "https://newsapi.org/v2/everything?q=farming+technology+india&apiKey=ed87f846339f40569b4527126aed153f";
+    } else if (query == "Weather") {
+      url =
+          "https://newsapi.org/v2/everything?q=india+weather+farming&apiKey=ed87f846339f40569b4527126aed153f";
+    } else if (query == "Markets") {
+      url =
+          "https://newsapi.org/v2/everything?q=india+apmc&apiKey=ed87f846339f40569b4527126aed153f";
+    } else {
+      "https://newsapi.org/v2/top-headlines?country=in&apiKey=ed87f846339f40569b4527126aed153f";
     }
 
     Response response = await get(Uri.parse(url));
@@ -107,7 +118,11 @@ class _CategoryNewsState extends State<CategoryNews> {
                             // Image.asset('assets/images/news.png')
                             child: InkWell(
                               onTap: () {
-                                Navigator.push(context, MaterialPageRoute(builder: (context)=> NewsView(newsModelList[index].newsUrl)));
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => NewsView(
+                                            newsModelList[index].newsUrl)));
                               },
                               child: Card(
                                 elevation: 1.0,
@@ -119,7 +134,8 @@ class _CategoryNewsState extends State<CategoryNews> {
                                   child: Stack(
                                     children: [
                                       ClipRRect(
-                                          borderRadius: BorderRadius.circular(15),
+                                          borderRadius:
+                                              BorderRadius.circular(15),
                                           child: Image.network(
                                             newsModelList[index].newsImg,
                                             fit: BoxFit.fill,
@@ -141,7 +157,8 @@ class _CategoryNewsState extends State<CategoryNews> {
                                                       Colors.black
                                                     ],
                                                     begin: Alignment.topCenter,
-                                                    end: Alignment.bottomCenter)),
+                                                    end: Alignment
+                                                        .bottomCenter)),
                                             child: Container(
                                               margin: EdgeInsets.fromLTRB(
                                                   15, 15, 10, 5),
