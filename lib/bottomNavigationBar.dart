@@ -20,20 +20,21 @@ class BottomNavigationBar extends StatefulWidget {
 class _BottomNavigationBarState extends State<BottomNavigationBar> {
   int navigationIndex = 1;
   final navigationPages = [
-    EcommercePage(),
-    Dashboard(),
-    CropCare(),
-    Settings()
+    
+    const EcommercePage(),
+    const Dashboard(),
+    const CropCare(),
+    const Settings()
   ];
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return  Scaffold(
        bottomNavigationBar: NavigationBarTheme(
         data: NavigationBarThemeData(
-            indicatorColor: Color(0xff1E7141),
-            backgroundColor: Color(0xff004B20),
+            indicatorColor: const Color(0xff1E7141),
+            backgroundColor: const Color(0xff004B20),
             labelTextStyle: MaterialStateProperty.all(
-              TextStyle(
+             const TextStyle(
                   fontFamily: 'Roboto',
                   fontWeight: FontWeight.normal,
                   color: Colors.white),
@@ -43,25 +44,25 @@ class _BottomNavigationBarState extends State<BottomNavigationBar> {
             onDestinationSelected: (navigationIndex) =>
                 setState(() => this.navigationIndex = navigationIndex),
             destinations: [
-              NavigationDestination(
+             const NavigationDestination(
                   icon: Icon(
                     FeatherIcons.shoppingCart,
                     color: Colors.white,
                   ),
                   label: 'E-Com'),
-              NavigationDestination(
+             const NavigationDestination(
                   icon: Icon(
                     FeatherIcons.home,
                     color: Colors.white,
                   ),
                   label: 'Home'),
-              NavigationDestination(
+             const NavigationDestination(
                   icon: Icon(
                     FeatherIcons.feather,
                     color: Colors.white,
                   ),
                   label: 'Crop-Care'),
-              NavigationDestination(
+             const NavigationDestination(
                   icon: Icon(
                     FeatherIcons.settings,
                     color: Colors.white,

@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:dashboard/Screens/CropCare/cropcare_home.dart';
 import 'package:dashboard/Screens/Ecommerce/ecommerce.dart';
+import 'package:dashboard/Screens/News/news.dart';
 import 'package:dashboard/Screens/Settings/settings.dart';
 import 'package:dashboard/Screens/Dashboard/dashboard.dart';
 import 'package:dashboard/data.dart';
@@ -21,7 +22,7 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
-  
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -47,8 +48,14 @@ class _MyHomePageState extends State<MyHomePage> {
   void getAllData() async {
     AllData data = AllData();
     await data.getLocation();
-    print(data.lat);
-    print(data.long);
+    String lat = data.lat;
+    String long = data.long;
+    print(lat);
+    print(long);
+    await data.getWeatherdata(lat, long);
+    print(data.currentTemp);
+    print(data.desc);
+    await data.setData();
   }
 
   @override
@@ -59,30 +66,20 @@ class _MyHomePageState extends State<MyHomePage> {
     getAllData();
   }
 
-  void getWeatherdata() async {
-    Response response = await get(Uri.parse(
-        'https://api.openweathermap.org/data/2.5/weather?lat=44.34&lon=10.99&appid=f8ec8e9f9624de6f8dad5b43922ae5f6'));
-        Map data = jsonDecode(response.body);
-        Map main = data['main'];
-        String temp = main['temp'];
-
-        int stack = 124.32.round();
-  }
-
 //For Navigation between screens
   int navigationIndex = 1;
   final navigationPages = [
-    EcommercePage(),
-    Dashboard(),
-    CropCare(),
-    Settings()
+    const EcommercePage(),
+    const Dashboard(),
+    const CropCare(),
+    const Settings()
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: navigationPages[navigationIndex],
-      //This code is for Navigation bar
+      //This code is old for Navigation bar
       // bottomNavigationBar: BottomNavigationBar(
       //     backgroundColor: Color(0xff004B20),
       //     selectedItemColor: Colors.white,
@@ -122,11 +119,11 @@ class _MyHomePageState extends State<MyHomePage> {
       //       ),
       //     ]),
 
-//Old navigation bar
+// New navigation bar
       bottomNavigationBar: NavigationBarTheme(
         data: NavigationBarThemeData(
-            indicatorColor: Color(0xff1E7141),
-            backgroundColor: Color(0xff004B20),
+            indicatorColor: const Color(0xff1E7141),
+            backgroundColor: const Color(0xff004B20),
             labelTextStyle: MaterialStateProperty.all(
               TextStyle(
                   fontFamily: 'Roboto',
@@ -138,25 +135,25 @@ class _MyHomePageState extends State<MyHomePage> {
             onDestinationSelected: (navigationIndex) =>
                 setState(() => this.navigationIndex = navigationIndex),
             destinations: [
-              NavigationDestination(
+              const NavigationDestination(
                   icon: Icon(
                     FeatherIcons.shoppingCart,
                     color: Colors.white,
                   ),
                   label: 'E-Com'),
-              NavigationDestination(
+              const NavigationDestination(
                   icon: Icon(
                     FeatherIcons.home,
                     color: Colors.white,
                   ),
                   label: 'Home'),
-              NavigationDestination(
+              const NavigationDestination(
                   icon: Icon(
                     FeatherIcons.feather,
                     color: Colors.white,
                   ),
                   label: 'Crop-Care'),
-              NavigationDestination(
+              const NavigationDestination(
                   icon: Icon(
                     FeatherIcons.settings,
                     color: Colors.white,

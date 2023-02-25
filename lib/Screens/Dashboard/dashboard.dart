@@ -1,4 +1,6 @@
+import 'package:dashboard/Screens/News/news.dart';
 import 'package:dashboard/Screens/Weather/weather.dart';
+import 'package:dashboard/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -8,6 +10,9 @@ import 'package:dashboard/routes.dart';
 
 class Dashboard extends StatefulWidget {
   static String route = "dashboard";
+  static late String temperature = "...";
+  static late String description = "...";
+
   const Dashboard({Key? key}) : super(key: key);
 
   @override
@@ -19,7 +24,10 @@ class _DashboardState extends State<Dashboard> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    print("This is init state");
+    print("This is Dashboard init state");
+    Future<void> refresh() async {
+      setState(() {});
+    }
   }
   //For Navigation between screens
   // int navigationIndex = 1;
@@ -27,13 +35,11 @@ class _DashboardState extends State<Dashboard> {
 
   // ];
 
-  void getData() async {}
   @override
   Widget build(BuildContext context) {
     double width_mq = MediaQuery.of(context).size.width;
-    double height = MediaQuery.of(context).size.height;
+    double height_mq = MediaQuery.of(context).size.height;
     return MaterialApp(
-      
       home: Scaffold(
         backgroundColor: Color(0xffC9E265),
         body: SingleChildScrollView(
@@ -66,7 +72,7 @@ class _DashboardState extends State<Dashboard> {
                     Column(
                       children: [
                         Text(
-                          "24°C",
+                          Dashboard.temperature + "°C",
                           style: TextStyle(
                             fontSize: 46,
                             fontFamily: 'Quicksand',
@@ -79,7 +85,7 @@ class _DashboardState extends State<Dashboard> {
                           child: Container(
                             width: 104,
                             child: Text(
-                              'cloudy',
+                              Dashboard.description,
                               textAlign: TextAlign.left,
                               style: TextStyle(
                                 fontFamily: 'Quicksand',
@@ -150,7 +156,8 @@ class _DashboardState extends State<Dashboard> {
                                         child: Column(
                                           children: [
                                             Container(
-                                              margin: EdgeInsets.only(top: 21),
+                                              margin:
+                                                  EdgeInsets.only(top: 21),
                                               child: Image.asset(
                                                 'assets/images/dashboardimages/weather_icon.png',
                                               ),
@@ -248,7 +255,8 @@ class _DashboardState extends State<Dashboard> {
                                         child: Column(
                                           children: [
                                             Container(
-                                              margin: EdgeInsets.only(top: 21),
+                                              margin:
+                                                  EdgeInsets.only(top: 21),
                                               child: Image.asset(
                                                 'assets/images/dashboardimages/community_icon.png',
                                               ),
@@ -291,7 +299,8 @@ class _DashboardState extends State<Dashboard> {
                                         child: Column(
                                           children: [
                                             Container(
-                                              margin: EdgeInsets.only(top: 21),
+                                              margin:
+                                                  EdgeInsets.only(top: 21),
                                               child: Image.asset(
                                                 'assets/images/dashboardimages/news_icon.png',
                                               ),
@@ -311,7 +320,10 @@ class _DashboardState extends State<Dashboard> {
                                             )
                                           ],
                                         )),
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      Navigator.pushNamed(
+                                          context, NewsPage.route);
+                                    },
                                   ),
                                 ],
                               ),
@@ -342,7 +354,8 @@ class _DashboardState extends State<Dashboard> {
                                         child: Column(
                                           children: [
                                             Container(
-                                              margin: EdgeInsets.only(top: 21),
+                                              margin:
+                                                  EdgeInsets.only(top: 21),
                                               child: Image.asset(
                                                 'assets/images/dashboardimages/soil_testing_icon.png',
                                               ),
@@ -385,7 +398,8 @@ class _DashboardState extends State<Dashboard> {
                                         child: Column(
                                           children: [
                                             Container(
-                                              margin: EdgeInsets.only(top: 21),
+                                              margin:
+                                                  EdgeInsets.only(top: 21),
                                               child: Image.asset(
                                                 'assets/images/dashboardimages/equipment_icon.png',
                                               ),
