@@ -1,4 +1,5 @@
 import 'package:dashboard/Screens/News/news.dart';
+import 'package:dashboard/Screens/SoilTesting/soiltesting.dart';
 import 'package:dashboard/Screens/Weather/weather.dart';
 import 'package:dashboard/main.dart';
 import 'package:flutter/material.dart';
@@ -375,7 +376,10 @@ class _DashboardState extends State<Dashboard> {
                                             )
                                           ],
                                         )),
-                                    onPressed: () {},
+                                    onPressed: () {
+                                       Navigator.pushNamed(
+                                          context, SoilTesting.route);
+                                    },
                                   ),
                                   //Equipment renting
                                   TextButton(

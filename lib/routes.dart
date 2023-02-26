@@ -1,3 +1,4 @@
+import 'package:dashboard/Screens/SoilTesting/soiltesting.dart';
 import 'package:dashboard/Screens/Weather/weather.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
@@ -9,5 +10,6 @@ getRoutes() {
   return {
     WeatherPage.route: (context) => WeatherPage(),
     NewsPage.route: (context) => NewsPage(),
+    SoilTesting.route: (context) => SoilTesting()
   };
 }
